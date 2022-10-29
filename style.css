@@ -1,0 +1,17 @@
+.btn1{
+    cursor: pointer;
+    position: relative;
+    left: 24cm;
+    top: -1cm;
+}
+
+textarea.form-control {
+    height: auto;
+    margin-left: 4.6cm;
+}
+
+.cc{
+    position: relative;
+    top: 1cm;
+    left: -0.4cm;
+}
