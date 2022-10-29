@@ -35,7 +35,7 @@ class Display
     add(libraryOfSeries) 
     {
         let uiString = `<tr class="series">
-                            <td>${libraryOfSeries.series}</td>
+                            <td class="series-name">${libraryOfSeries.series}</td>
                             <td class="table-dark">${libraryOfSeries.type}</td>
                             <button class="btn1 btn-primary">Delete</button>
                         </tr>`;
@@ -60,9 +60,11 @@ function displayGenre(series, genreToFilter)
 
 
 // calling the function display
+
 displayGenre(listSeries, "Drama");
 displayGenre(listSeries, "Comedy");
-displayGenre(listSeries, "Horror");
+displayGenre(listSeries, "Horror");  
+
 
 
 seriesForm.addEventListener("submit", function(e)
@@ -74,6 +76,8 @@ seriesForm.addEventListener("submit", function(e)
     let comedy = document.querySelector("#comedy");
     let drama = document.querySelector("#drama");
     let type;
+
+
 
 
     if(horror.checked)
@@ -89,23 +93,34 @@ seriesForm.addEventListener("submit", function(e)
         type = drama.value;
     }
 
+    let thisSeries = listSeries.find(e => e.genre = type);
 
-    let addingSeriestoList = new Series(series, type);
+    thisSeries.film.push(series);
 
-    let displayList = new Display();
+    console.log(listSeries);
+
+
+   tableBody.innerHTML = "";
+
+
+
+    // let addingSeriestoList = new Series(series, type);
+
+    // let displayList = new Display();
 
 
     if(series == "")
     {
         alert("Fill up everything");
     }
-    else
-    {
-        displayList.add(addingSeriestoList);
-    }
+    // else
+    // {
+    //     displayList.add(addingSeriestoList);
+    // }
 })
 
 
+// DELETE SERIES FROM THE LIST
 
 let btnDelete = document.querySelectorAll(".btn1");
 
@@ -115,13 +130,8 @@ for(let i of btnDelete)
     {
         let item = e.target;
 
-        let index = [...item.parentElement.children].indexOf(item);
+        item.previousSibling.remove();
 
-        let numer = Math.floor((index / 2));
-        
-        let item1 = item.parentElement.children[numer];
-
-        console.log(item1);
-
+        item.remove();
     })
 }
