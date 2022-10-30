@@ -18,7 +18,6 @@ let listSeries =
 ]
 
 
-
 class Series
 {
     constructor(series, type)
