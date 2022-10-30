@@ -36,7 +36,7 @@ class Display
 
     add(libraryOfSeries) 
     {
-        let uiString = `<tr class="series">
+        let uiString = `<tr class="series" id="${libraryOfSeries.series}">
                             <td class="series-name">${libraryOfSeries.series}</td>
                             <td class="table-dark">${libraryOfSeries.type}</td>
                             <button class="btn1 btn-primary">Delete</button>
@@ -132,77 +132,15 @@ search.addEventListener("input", function(e)
 {
     e.preventDefault();
 
-    let see = search.value;
+    let word = search.value;
 
-    listSeries.forEach(e =>  {
-
-        let yes = e.film.includes(see);
-
-        e.toggle("hide", !yes);
+    listSeries.forEach(e => 
+    {
+        e.film.forEach(name =>
+            {            
+                const tr = document.getElementById(name);
+                
+                tr.style.display = name.includes(word) ? '' : 'none';
+            })
     })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // let serie1 = listSeries.find(e => e.genre == "Drama");
-    // let serie2 = listSeries.find(e => e.genre == "Horror");
-    // let serie3 = listSeries.find(e => e.genre == "Comedy");
-
-    // let series = [...serie1.film, ...serie2.film, ...serie3.film];
-
-
-
-    // let finalSearch = [];
-    // let searchCorrect;
-
-    // search.value[0] == search.value[0].toUpperCase() ? searchCorrect = search.value.toUpperCase() : searchCorrect = search.value.toLowerCase();
-
-    // let result = searchCorrect.split(" ");
-
-    // let result = search.value.toLowerCase().split(" ");
-
-    // for(let i of result)
-    // {
-    //     finalSearch.push(i[0].toUpperCase() + i.slice(1));
-    // }
-
-    // search = finalSearch.join(" ");
-
-    // console.log(search)
-
-
-    // for(let i of series)
-    // {
-    //     if(search  == i)
-    //     {
-    //         let browser = new Series(i, "type");
-
-    //         let display = new Display;
-
-    //         tableBody.innerHTML = "";
-
-    //         display.add(browser);
-    //     }
-    // }
 })
