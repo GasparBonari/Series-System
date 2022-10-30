@@ -61,9 +61,13 @@ function displayGenre(series, genreToFilter)
 
 // calling the function display
 
-displayGenre(listSeries, "Drama");
-displayGenre(listSeries, "Comedy");
-displayGenre(listSeries, "Horror");  
+function updateUI()
+{
+    displayGenre(listSeries, "Drama");
+    displayGenre(listSeries, "Comedy");
+    displayGenre(listSeries, "Horror");
+}
+updateUI();
 
 
 
@@ -76,8 +80,6 @@ seriesForm.addEventListener("submit", function(e)
     let comedy = document.querySelector("#comedy");
     let drama = document.querySelector("#drama");
     let type;
-
-
 
 
     if(horror.checked)
@@ -93,30 +95,20 @@ seriesForm.addEventListener("submit", function(e)
         type = drama.value;
     }
 
-    let thisSeries = listSeries.find(e => e.genre = type);
+    let thisSeries = listSeries.find(e => e.genre == type);
 
-    thisSeries.film.push(series);
+    thisSeries.film.unshift(series);
 
-    console.log(listSeries);
+    
+    // updating UI
+    tableBody.innerHTML = "";
+    updateUI();
 
-
-   tableBody.innerHTML = "";
-
-
-
-    // let addingSeriestoList = new Series(series, type);
-
-    // let displayList = new Display();
-
-
+    
     if(series == "")
     {
-        alert("Fill up everything");
+        alert("Fill up the form");
     }
-    // else
-    // {
-    //     displayList.add(addingSeriestoList);
-    // }
 })
 
 
