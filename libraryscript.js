@@ -18,6 +18,7 @@ let listSeries =
 ]
 
 
+
 class Series
 {
     constructor(series, type)
@@ -99,7 +100,7 @@ seriesForm.addEventListener("submit", function(e)
 
     thisSeries.film.unshift(series);
 
-    
+
     // updating UI
     tableBody.innerHTML = "";
     updateUI();
