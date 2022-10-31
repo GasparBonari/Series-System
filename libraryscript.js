@@ -37,9 +37,9 @@ class Display
     add(libraryOfSeries) 
     {
         let uiString = `<tr class="series" id="${libraryOfSeries.series}">
-                            <td class="series-name">${libraryOfSeries.series}</td>
-                            <td class="table-dark">${libraryOfSeries.type}</td>
-                            <button class="btn1 btn-primary">Delete</button>
+                            <td class="table-dark color">${libraryOfSeries.series}</td>
+                            <td>${libraryOfSeries.type}</td>
+                            <button class="btn1 btn-outline-danger">Delete</button>
                         </tr>`;
         tableBody.innerHTML += uiString;
     }
@@ -137,10 +137,33 @@ search.addEventListener("input", function(e)
     listSeries.forEach(e => 
     {
         e.film.forEach(name =>
-            {            
+            {
                 const tr = document.getElementById(name);
-                
-                tr.style.display = name.includes(word) ? '' : 'none';
+
+                tr.style.display = name.includes(word) ? "" : 'none';
+
+                console.log(tr.style.display);
             })
     })
+})
+
+
+// STYLE
+
+tableBody.addEventListener("mouseover", function(e)
+{
+    let ss = e.target.closest(".color");
+
+    if(ss == null)return;
+
+    ss.style.color = "darkgreen";
+})
+
+tableBody.addEventListener("mouseout", function(e)
+{
+    let ss = e.target.closest(".color");
+
+    if(ss == null)return;
+
+    ss.style.color = "white";
 })
