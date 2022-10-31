@@ -39,7 +39,7 @@ class Display
         let uiString = `<tr class="series" id="${libraryOfSeries.series}">
                             <td class="table-dark color">${libraryOfSeries.series}</td>
                             <td>${libraryOfSeries.type}</td>
-                            <button class="btn1 btn-outline-danger">Delete</button>
+                            <button class="btn1 btn-outline-danger hidden" id="${libraryOfSeries.series}">Delete</button>
                         </tr>`;
         tableBody.innerHTML += uiString;
     }
@@ -114,15 +114,35 @@ seriesForm.addEventListener("submit", function(e)
 })
 
 
-// DELETE SERIES FROM THE LIST
+// SHOW DELETE BUTTON WHEN CLICK
+
+document.querySelector(".table").addEventListener("click", function(e)
+{
+    let item = e.target.closest(".color");
+    let btn = e.target.parentElement.nextSibling;
+
+    if(item == null) return;
+
+    if(item.parentElement.id == btn.id)
+    {
+        btn.classList.toggle("hidden");
+    }
+})
+
+
+// DELETE ELEMENT FROM LIST
 
 tableBody.addEventListener("click", function(e)
 {
     let item = e.target.closest(".btn1");
 
+    if(!item) return;
+
     item.previousSibling.remove();
 
     item.remove();
+
+    console.log(listSeries)
 })
 
 
@@ -138,11 +158,10 @@ search.addEventListener("input", function(e)
     {
         e.film.forEach(name =>
             {
+                const match = name.toLowerCase().includes(word.toLowerCase());
                 const tr = document.getElementById(name);
 
-                tr.style.display = name.includes(word) ? "" : 'none';
-
-                console.log(tr.style.display);
+                tr.style.display = match ? "" : 'none';
             })
     })
 })
