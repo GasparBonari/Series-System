@@ -23,3 +23,9 @@ textarea.form-control {
 .color{
     cursor: pointer;
 }
+
+#searchTxt{
+    position: relative;
+    left: 22.6cm;
+    bottom: 1.3cm;
+}

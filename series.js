@@ -61,7 +61,7 @@ function displaySeries(series, genreToFilter)
 }
 
 
-// calling the function display
+// CALLING THE FUNTION DISPLAY
 
 function updateUI()
 {
@@ -169,20 +169,42 @@ search.addEventListener("input", function(e)
 
 // STYLE
 
-tableBody.addEventListener("mouseover", function(e)
+function changingColors(e)
 {
-    let ss = e.target.closest(".color");
+    let changeColor = e.target.closest(".color");
 
-    if(ss == null)return;
+    if(changeColor == null)return;
 
-    ss.style.color = "darkgreen";
+    changeColor.style.color = this; // this because we call .bind() in order to set an argument in addEventListener()
+}
+
+tableBody.addEventListener("mouseover", changingColors.bind("darkgreen"));
+tableBody.addEventListener("mouseout", changingColors.bind("white"));
+
+
+// NAV STICK
+
+let nav = document.querySelector(".navbar");
+let zone = document.querySelector("#seriesForm");
+
+function stickynav(entries)
+{
+  let [entry] = entries;
+
+  if(!entry.isIntersecting)
+  {
+    nav.classList.add("sticky-top");
+  }
+  else
+  {
+    nav.classList.remove("sticky-top");
+  }
+}
+
+let navObserver = new IntersectionObserver(stickynav, 
+{
+    root:null,
+    threshold: 0.7
 })
 
-tableBody.addEventListener("mouseout", function(e)
-{
-    let ss = e.target.closest(".color");
-
-    if(ss == null)return;
-
-    ss.style.color = "white";
-})
+navObserver.observe(zone);
