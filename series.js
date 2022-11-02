@@ -13,7 +13,7 @@ let listSeries =
             'Sex Eductaion', '13 Reasons Why', 'Skins', 'One of Us Is Lying'], genre: "Drama"},
 
     {film: ['Servant', 'Penny Dreadful', 'Them', 'The Haunting of Bly Manor', 'Sweet Home', 'The Haunting of Hill House',
-             'Haunted', 'True Blood', 'The Midnight Club'], genre: "Horror"},
+             'Haunted', 'Marianne', 'The Midnight Club'], genre: "Horror"},
 
     {film: ['Rick and Morty', 'The Office US', 'The Office UK', 'Friends', 'Seinfeld', 'The Simpsons', 'The Good Place',
              'Two and a Half Men'], genre: "Comedy"}
