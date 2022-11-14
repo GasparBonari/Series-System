@@ -116,17 +116,13 @@ seriesForm.addEventListener("submit", function(e)
 
 // SHOW DELETE BUTTON WHEN CLICK
 
-document.querySelector(".table").addEventListener("click", function(e)
+tableBody.addEventListener("click", function(e)
 {
-    let item = e.target.closest(".color");
     let btn = e.target.parentElement.nextSibling;
 
-    if(item == null) return;
+    if(btn == null) return;
 
-    if(item.parentElement.id == btn.id)
-    {
-        btn.classList.toggle("hidden");
-    }
+    btn.classList.toggle("hidden");
 })
 
 
@@ -138,9 +134,9 @@ tableBody.addEventListener("click", function(e)
 
     if(!item) return;
 
-    item.previousSibling.remove();
+    item.previousSibling.classList.add("hidden");
 
-    item.remove();
+    item.classList.add("hidden");
 })
 
 
@@ -156,10 +152,10 @@ search.addEventListener("input", function(e)
     {
         e.film.forEach(name =>
         {
-            const match = name.toLowerCase().includes(word.toLowerCase());
-            const tr = document.getElementById(name);
+            let match = name.toLowerCase().includes(word.toLowerCase());
+            let tr = document.getElementById(name);
 
-            tr.style.display = match ? "" : 'none';
+            tr.style.display = match ? "" : "none";
         })
     })
 })
