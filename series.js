@@ -141,8 +141,6 @@ tableBody.addEventListener("click", function(e)
     item.previousSibling.remove();
 
     item.remove();
-
-    console.log(listSeries)
 })
 
 
@@ -157,12 +155,12 @@ search.addEventListener("input", function(e)
     listSeries.forEach(e => 
     {
         e.film.forEach(name =>
-            {
-                const match = name.toLowerCase().includes(word.toLowerCase());
-                const tr = document.getElementById(name);
+        {
+            const match = name.toLowerCase().includes(word.toLowerCase());
+            const tr = document.getElementById(name);
 
-                tr.style.display = match ? "" : 'none';
-            })
+            tr.style.display = match ? "" : 'none';
+        })
     })
 })
 
