@@ -72,7 +72,6 @@ function updateUI()
 updateUI();
 
 
-
 seriesForm.addEventListener("submit", function(e)
 {
     e.preventDefault();
